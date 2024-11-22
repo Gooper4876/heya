@@ -3,20 +3,21 @@ echo "hello";
 
 $db = new mysqli('localhost', 'root', '', 'egzamin');
 
-$sql = "SELECT * FROM people";
+$sql = "SELECT * FROM wycieczki WHERE(dostepna = 1)";
 
 $result = $db->query($sql);
 echo "<table>";
-echo "<tr><th>ID</th>, <th>NAME</th>. <th>SECONDNAME</th>, <th>AGE</th></tr>";
+echo "<tr><th>DataWyjazdu</th>, <th>Cel</th>, <th>Cena</th></tr>";
 while ($row = $result->fetch_assoc()){
     
     echo "<tr>";
-    $id = $row['ID'];
-    $name = $row['Name'];
-    $secname = $row['SecondName'];
-    $age = $row['Age'];
+    $traveldate = $row['dataWyjazdu'];
+    $goal = $row['cel'];
+    $prize = $row['cena'];
+    $accesibility = $row['dostepna'];
 
-    echo "<td> ID: $id</td> <td>Imię: $name</td> <td>Nazwisko: $secname</td> <td>Age: $age </td>";
+
+    echo "<td> $traveldate </td> <td> $goal </td> <td> $prize zł </td>";
     echo "</tr>";
     
     
